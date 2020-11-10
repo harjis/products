@@ -1,0 +1,39 @@
+version: '3'
+services:
+  gateway:
+    depends_on:
+      - backend
+      - frontend
+    restart: always
+    build:
+      context: ./gateway
+    ports:
+      - 80:80
+  postgres:
+    image: 'postgres:latest'
+    volumes:
+      - ./backend/tmp/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      - postgres
+    environment:
+      - PGHOST=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - PGDATABASE_DEVELOPMENT=products_development
+      - PGDATABASE_TEST=products_test
+      - PGDATABASE_PRODUCTION=products_production
+    volumes:
+      - ./backend:/myapp
+  frontend:
+    # This was new: https://github.com/facebook/create-react-app/issues/8688
+    stdin_open: true
+    build:
+      context: ./frontend
+    volumes:
+      - /frontend/node_modules
+      - ./frontend:/frontend
