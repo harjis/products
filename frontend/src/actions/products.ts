@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
-import { Product } from "../types";
-import { fetchProducts } from "../api/products";
+
+import { Product } from "types";
+import { fetchProducts } from "api/products";
 
 type StartLoadingProducts = { type: "PRODUCTS/START_LOADING" };
 type ProductsLoaded = { type: "PRODUCTS/LOADED"; products: Product[] };

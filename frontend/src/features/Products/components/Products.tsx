@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connector, PropsFromRedux } from "../connector";
-import { List } from "../../../components/List";
+import { List } from "components/List";
 
 type Props = PropsFromRedux & {
   myProp: string;

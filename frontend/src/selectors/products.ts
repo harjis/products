@@ -1,10 +1,10 @@
 import { createSelector } from "reselect";
 
-import { ReduxState } from "../reducers";
+import { ReduxState } from "reducers";
 
 const productsSelector = (state: ReduxState) => state.products;
 
-export const getProductsSelector = createSelector(
+export const allProducts = createSelector(
   productsSelector,
   (productsState) => productsState.products
 );

@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk, { ThunkDispatch } from "redux-thunk";
 
 import { productsReducer, State as ProductsState } from "./products_reducer";
-import { Action } from "../actions";
+import { Action } from "actions";
 
 export type ReduxState = {
   products: ProductsState;

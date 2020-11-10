@@ -1,11 +1,11 @@
 import { createSelector } from "reselect";
 import { connect, ConnectedProps } from "react-redux";
 
-import { getProductsSelector } from "../../../selectors/products";
-import { AppDispatch } from "../../../reducers";
-import { getProducts } from "../../../actions";
+import { allProducts } from "selectors/products";
+import { AppDispatch } from "reducers";
+import { getProducts } from "actions";
 
-const mapStateToProps = createSelector(getProductsSelector, (products) => ({
+const mapStateToProps = createSelector(allProducts, (products) => ({
   products,
 }));
 const mapDispatchToProps = (dispatch: AppDispatch) => ({

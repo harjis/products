@@ -1,5 +1,5 @@
 import { Loading, Product } from "../types";
-import { Action } from "../actions";
+import { Action } from "actions";
 
 export type State = {
   loading: Loading;
