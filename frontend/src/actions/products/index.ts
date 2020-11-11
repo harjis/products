@@ -1,7 +1,8 @@
 import { fetchProducts } from "api/products";
-import { AppDispatch } from "../../reducers/types";
+import { AppAction } from "../../reducers/types";
 
-export const getProducts = () => (dispatch: AppDispatch) => {
+type GetProducts = () => AppAction;
+export const getProducts: GetProducts = () => (dispatch) => {
   dispatch({ type: "PRODUCTS/START_LOADING" });
   fetchProducts()
     .then((data) => dispatch({ type: "PRODUCTS/LOADED", products: data.data }))

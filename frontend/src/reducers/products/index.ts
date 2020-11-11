@@ -1,6 +1,6 @@
 import { Loading } from "types";
 import { ProductState } from "./types";
-import { AppAction } from "reducers/types";
+import { AllActions } from "reducers/types";
 
 const initialState: ProductState = {
   loading: Loading.NOT_LOADED,
@@ -9,7 +9,7 @@ const initialState: ProductState = {
 };
 export const productsReducer = (
   state: ProductState = initialState,
-  action: AppAction
+  action: AllActions
 ) => {
   switch (action.type) {
     case "PRODUCTS/START_LOADING":
