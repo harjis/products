@@ -1,5 +1,7 @@
+import { createSelector } from "reselect";
+
 import { fetchProducts } from "api/products";
-import { AppAction } from "../../reducers/types";
+import { AppAction, ReduxState } from "../types";
 
 type GetProducts = () => AppAction;
 export const getProducts: GetProducts = () => (dispatch) => {
@@ -13,3 +15,10 @@ export const getProducts: GetProducts = () => (dispatch) => {
       });
     });
 };
+
+const productsSelector = (state: ReduxState) => state.products;
+
+export const allProducts = createSelector(
+  productsSelector,
+  (productsState) => productsState.products
+);

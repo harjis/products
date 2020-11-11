@@ -1,15 +1,17 @@
 import { createSelector } from "reselect";
 import { connect, ConnectedProps } from "react-redux";
 
-import { allProducts } from "selectors/products";
-import { AppDispatch } from "reducers/types";
-import { getProducts } from "actions/products";
+import * as ProductStore from "stores/products";
+import { AppDispatch } from "stores/types";
 
-const mapStateToProps = createSelector(allProducts, (products) => ({
-  products,
-}));
+const mapStateToProps = createSelector(
+  ProductStore.allProducts,
+  (products) => ({
+    products,
+  })
+);
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
-  onGetProducts: () => dispatch(getProducts()),
+  onGetProducts: () => dispatch(ProductStore.getProducts()),
 });
 export const connector = connect(mapStateToProps, mapDispatchToProps);
 export type PropsFromRedux = ConnectedProps<typeof connector>;

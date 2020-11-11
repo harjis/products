@@ -1,6 +1,6 @@
 import { Loading } from "types";
-import { ProductState } from "./types";
-import { AllActions } from "reducers/types";
+import { ProductState } from "./reducer_types";
+import { AllActions } from "../types";
 
 const initialState: ProductState = {
   loading: Loading.NOT_LOADED,

@@ -1,7 +1,7 @@
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 
-import { ProductActions } from "../actions/products/types";
-import { ProductState } from "./products/types";
+import { ProductState } from "./products/reducer_types";
+import { ProductActions } from "./products/types";
 
 export type ReduxState = {
   products: ProductState;
