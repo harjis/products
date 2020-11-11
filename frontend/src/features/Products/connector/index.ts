@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 import { connect, ConnectedProps } from "react-redux";
 
-import * as ProductStore from "stores/products";
+import { ProductStore } from "stores/products";
 import { AppDispatch } from "stores/types";
 
 const mapStateToProps = createSelector(
