@@ -1,19 +1,15 @@
-import { Loading, Product } from "../types";
-import { Action } from "actions";
+import { Loading } from "types";
+import { ProductState } from "./types";
+import { AppAction } from "reducers/types";
 
-export type State = {
-  loading: Loading;
-  errorMessage: string;
-  products: Product[];
-};
-const initialState: State = {
+const initialState: ProductState = {
   loading: Loading.NOT_LOADED,
   errorMessage: "",
   products: [],
 };
 export const productsReducer = (
-  state: State = initialState,
-  action: Action
+  state: ProductState = initialState,
+  action: AppAction
 ) => {
   switch (action.type) {
     case "PRODUCTS/START_LOADING":

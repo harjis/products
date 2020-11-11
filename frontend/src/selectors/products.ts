@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-import { ReduxState } from "reducers";
+import { ReduxState } from "../reducers/types";
 
 const productsSelector = (state: ReduxState) => state.products;
 
