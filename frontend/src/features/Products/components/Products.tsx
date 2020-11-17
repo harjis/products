@@ -1,15 +1,16 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 import { List } from "components/List";
-import { useProducts } from "../hooks/useProducts";
+import { ProductStore } from "../../../stores/products";
 
 type Props = {
   myProp: string;
 };
-const Products = (props: React.PropsWithChildren<Props>) => {
-  const { products } = useProducts();
+export default observer((props: React.PropsWithChildren<Props>) => {
+  React.useEffect(() => {
+    ProductStore.getProducts();
+  }, []);
 
-  return <List items={products} labelKey="name" />;
-};
-
-export default Products;
+  return <List items={ProductStore.products} labelKey="name" />;
+});

@@ -1,22 +1,21 @@
-import { observable } from "micro-observables";
+import { makeAutoObservable } from "mobx";
 
 import { fetchProducts } from "api/products";
 import { Loading, Product } from "types";
 
 class Store {
-  private _products = observable<readonly Product[]>([]);
-  private _loading = observable<Loading>(Loading.NOT_LOADED);
+  products: Product[] = [];
+  loading: Loading = Loading.NOT_LOADED;
 
-  // The little I read the docs I should be doing .readOnly() here
-  // I convert this to mutable array so that I don't need to change
-  // all views too. Maybe not the best idea though 🤔
-  allProducts = this._products.as<Product[]>();
+  constructor() {
+    makeAutoObservable(this);
+  }
 
   getProducts() {
-    this._loading.set(Loading.LOADING);
+    this.loading = Loading.LOADING;
     fetchProducts().then((products) => {
-      this._loading.set(Loading.LOADED);
-      this._products.set(products.data);
+      this.loading = Loading.LOADED;
+      this.products = products.data;
     });
   }
 }
