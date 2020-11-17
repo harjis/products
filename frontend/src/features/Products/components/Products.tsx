@@ -1,18 +1,15 @@
 import React from "react";
 
-import { connector, PropsFromRedux } from "../connector";
 import { List } from "components/List";
+import { useProducts } from "../hooks/useProducts";
 
-type Props = PropsFromRedux & {
+type Props = {
   myProp: string;
 };
 const Products = (props: React.PropsWithChildren<Props>) => {
-  const { onGetProducts } = props;
-  React.useEffect(() => {
-    onGetProducts();
-  }, [onGetProducts]);
+  const { products } = useProducts();
 
-  return <List items={props.products} labelKey="name" />;
+  return <List items={products} labelKey="name" />;
 };
 
-export default connector(Products);
+export default Products;
