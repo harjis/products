@@ -36,4 +36,3 @@ services:
       context: ./frontend
     volumes:
       - /frontend/node_modules
-      - ./frontend:/frontend
