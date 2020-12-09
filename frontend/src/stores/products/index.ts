@@ -13,7 +13,7 @@ class Store {
 
   getProducts() {
     this.loading = Loading.LOADING;
-    fetchProducts().then((products) => {
+    fetchProducts().subscribe((products) => {
       this.loading = Loading.LOADED;
       this.products = products.data;
     });
