@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
-import { fetchProducts } from "api/products";
-import { Loading, Product } from "types";
+import { fetchProducts, createProduct } from "api/products";
+import { Loading, Product, ProductNew } from "types";
 
 class Store {
   products: Product[] = [];
@@ -17,6 +17,10 @@ class Store {
       this.loading = Loading.LOADED;
       this.products = products.data;
     });
+  }
+
+  createProduct(product: ProductNew) {
+    return createProduct(product);
   }
 }
 

@@ -1,21 +1,21 @@
 import React from "react";
-import { useLocalObservable, useObserver } from "mobx-react-lite";
+import { observer, useLocalObservable } from "mobx-react-lite";
 import { Link, useHistory } from "react-router-dom";
 
+import { ProductStore } from "../../../stores/products";
 import { Errors, ProductNew } from "../../../types";
 import { InputWithLabel } from "../../../components/InputWithLabel";
 import { Button } from "../../../components/Button";
-import { createProduct } from "../../../api/products";
 
 type Props = {};
-export const ProductForm: React.FC<Props> = (props) => {
+export const ProductForm: React.FC<Props> = observer((props) => {
   const product = useLocalObservable<ProductNew>(() => ({
     id: null,
     name: "",
   }));
   const history = useHistory();
   const onCreate = () => {
-    createProduct(product).subscribe(
+    ProductStore.createProduct(product).subscribe(
       () => {
         history.push("/products");
       },
@@ -24,7 +24,7 @@ export const ProductForm: React.FC<Props> = (props) => {
       }
     );
   };
-  return useObserver(() => (
+  return (
     <div>
       <Link to="/products">Back to products</Link>
       <InputWithLabel
@@ -36,5 +36,5 @@ export const ProductForm: React.FC<Props> = (props) => {
       />
       <Button onClick={onCreate} title="Create" />
     </div>
-  ));
-};
+  );
+});

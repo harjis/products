@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { from, Observable } from "rxjs";
 
-import { Product, ProductNew, Errors } from "../types";
+import { Product, ProductNew } from "../types";
 import { toCatchable } from "./toCatchable";
 
 export const fetchProducts = (): Observable<AxiosResponse<Product[]>> =>
